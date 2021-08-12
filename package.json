@@ -1,5 +1,5 @@
 {
-  "name": "ofd-xml-parser",
+  "name": "fast-xml-parser-serialno",
   "version": "0.0.2",
   "description": "Validate XML or Parse XML to JS/JSON very fast without C/C++ based libraries",
   "main": "./src/parser.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dltech21/fast-xml-parser"
+    "url": "https://github.com/BODhaha/fast-xml-parser-serialno.git"
   },
   "keywords": [
     "fast",
@@ -39,7 +39,7 @@
     "locale",
     "html"
   ],
-  "author": "dltech21",
+  "author": "BODhaha",
   "license": "MIT Modified",
   "devDependencies": {
     "@babel/core": "^7.10.2",

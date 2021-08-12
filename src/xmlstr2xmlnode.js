@@ -173,7 +173,7 @@ const getTraversalObj = function(xmlData, options) {
   const xmlObj = new xmlNode('!xml');
   let currentNode = xmlObj;
   let textData = "";
-
+  let objSerialIndex = 0;
 //function match(xmlData){
   for(let i=0; i< xmlData.length; i++){
     const ch = xmlData[i];
@@ -272,6 +272,7 @@ const getTraversalObj = function(xmlData, options) {
           }
         }
 
+        
         if(tagExp.length > 0 && tagExp.lastIndexOf("/") === tagExp.length - 1){//selfClosing tag
 
           if(tagName[tagName.length - 1] === "/"){ //remove trailing '/'
@@ -282,6 +283,8 @@ const getTraversalObj = function(xmlData, options) {
           }
 
           const childNode = new xmlNode(tagName, currentNode, '');
+          
+          tagExp = `objSerialIndex="${objSerialIndex}"` + tagExp
           if(tagName !== tagExp){
             childNode.attrsMap = buildAttributesMap(tagExp, options);
           }
@@ -292,12 +295,14 @@ const getTraversalObj = function(xmlData, options) {
           if (options.stopNodes.length && options.stopNodes.includes(childNode.tagname)) {
             childNode.startIndex=closeIndex;
           }
+          tagExp = `objSerialIndex="${objSerialIndex}"` + tagExp
           if(tagName !== tagExp){
             childNode.attrsMap = buildAttributesMap(tagExp, options);
           }
           currentNode.addChild(childNode);
           currentNode = childNode;
         }
+        objSerialIndex++
         textData = "";
         i = closeIndex;
       }
